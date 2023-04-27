@@ -2,10 +2,8 @@
 
 import React, { useCallback } from 'react';
 
-// @ts-ignore
 import JitsiScreen from '../../../base/modal/components/JitsiScreen';
 import { goBack }
-// @ts-ignore
     from '../../../mobile/navigation/components/conference/ConferenceNavigationContainerRef';
 import AbstractLanguageSelectorDialog, {
     IAbstractLanguageSelectorDialogProps

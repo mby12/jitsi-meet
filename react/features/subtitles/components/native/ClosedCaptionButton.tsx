@@ -1,5 +1,3 @@
-/* eslint-disable lines-around-comment  */
-
 import { connect } from 'react-redux';
 
 import { IReduxState } from '../../../app/types';
@@ -8,9 +6,7 @@ import { getFeatureFlag } from '../../../base/flags/functions';
 import { translate } from '../../../base/i18n/functions';
 import { IconSubtitles } from '../../../base/icons/svg';
 import { navigate }
-// @ts-ignore
     from '../../../mobile/navigation/components/conference/ConferenceNavigationContainerRef';
-// @ts-ignore
 import { screen } from '../../../mobile/navigation/routes';
 import {
     AbstractClosedCaptionButton,
