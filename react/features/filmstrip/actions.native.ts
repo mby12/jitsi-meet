@@ -24,7 +24,7 @@ export function setTileViewDimensions() {
         const { clientHeight: height, clientWidth: width, safeAreaInsets = {} } = state['features/base/responsive-ui'];
         const { left = 0, right = 0, top = 0, bottom = 0 } = safeAreaInsets;
         const columns = getColumnCount(state);
-        const rows = Math.ceil(participantCount / columns);
+        const rows = Math.ceil(participantCount / columns); // @ts-ignore
         const conferenceBorder = conferenceStyles.conference.borderWidth || 0;
         const heightToUse = height - top - bottom - (2 * conferenceBorder);
         const widthToUse = width - (TILE_MARGIN * 2) - left - right - (2 * conferenceBorder);

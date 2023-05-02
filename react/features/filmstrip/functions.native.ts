@@ -222,7 +222,7 @@ export function getFilmstripDimensions({
     aspectRatio: Symbol;
     clientHeight: number;
     clientWidth: number;
-    insets: {
+    insets?: {
         bottom?: number;
         left?: number;
         right?: number;
@@ -230,7 +230,7 @@ export function getFilmstripDimensions({
     };
     localParticipantVisible?: boolean;
 }) {
-    const { height, width, margin } = styles.thumbnail;
+    const { height, width, margin } = styles.thumbnail; // @ts-ignore
     const conferenceBorder = conferenceStyles.conference.borderWidth || 0;
     const { left = 0, right = 0, top = 0, bottom = 0 } = insets;
 
