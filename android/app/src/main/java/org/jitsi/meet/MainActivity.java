@@ -39,6 +39,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 import java.util.HashMap;
+import com.facebook.react.BuildConfig;
+
 
 /**
  * The one and only Activity that the Jitsi Meet app needs. The
@@ -87,7 +89,7 @@ public class MainActivity extends JitsiMeetActivity {
 
     @Override
     protected boolean extraInitialize() {
-        Log.d(this.getClass().getSimpleName(), "LIBRE_BUILD="+BuildConfig.LIBRE_BUILD);
+//        Log.d(this.getClass().getSimpleName(), "LIBRE_BUILD="+BuildConfig.);
 
         // Setup Crashlytics and Firebase Dynamic Links
         // Here we are using reflection since it may have been disabled at compile time.

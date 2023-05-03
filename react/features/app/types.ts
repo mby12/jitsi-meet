@@ -28,7 +28,7 @@ import { ITooltipState } from '../base/tooltip/reducer';
 import { INoSrcDataState, ITracksState } from '../base/tracks/reducer';
 import { IUserInteractionState } from '../base/user-interaction/reducer';
 import { IBreakoutRoomsState } from '../breakout-rooms/reducer';
-import { ICalendarSyncState } from '../calendar-sync/reducer';
+// import { ICalendarSyncState } from '../calendar-sync/reducer';
 import { IChatState } from '../chat/reducer';
 import { IDeepLinkingState } from '../deep-linking/reducer';
 import { IDropboxState } from '../dropbox/reducer';
@@ -117,7 +117,7 @@ export interface IReduxState {
     'features/base/tracks': ITracksState;
     'features/base/user-interaction': IUserInteractionState;
     'features/breakout-rooms': IBreakoutRoomsState;
-    'features/calendar-sync': ICalendarSyncState;
+    // 'features/calendar-sync': ICalendarSyncState;
     'features/call-integration': ICallIntegrationState;
     'features/chat': IChatState;
     'features/deep-linking': IDeepLinkingState;

@@ -1,5 +1,5 @@
 import { NativeModules, Platform } from 'react-native';
-import RNCalendarEvents from 'react-native-calendar-events';
+// import RNCalendarEvents from 'react-native-calendar-events';
 
 import { IReduxState, IStore } from '../app/types';
 import { IStateful } from '../base/app/types';
@@ -22,34 +22,34 @@ export * from './functions.any';
  * @param {string} link - The link to add info with.
  * @returns {Promise<*>}
  */
-export function addLinkToCalendarEntry(
-        state: IReduxState, id: string, link: string): Promise<any> {
-    return new Promise((resolve, reject) => {
-        getShareInfoText(state, link, true).then((shareInfoText: string) => {
-            RNCalendarEvents.findEventById(id).then((event: any) => {
-                const updateText
-                    = event.description
-                        ? `${event.description}\n\n${shareInfoText}`
-                        : shareInfoText;
-                const updateObject = {
-                    id: event.id,
-                    ...Platform.select({
-                        ios: {
-                            notes: updateText
-                        },
-                        android: {
-                            description: updateText
-                        }
-                    })
-                };
+// export function addLinkToCalendarEntry(
+//         state: IReduxState, id: string, link: string): Promise<any> {
+//     return new Promise((resolve, reject) => {
+//         getShareInfoText(state, link, true).then((shareInfoText: string) => {
+//             RNCalendarEvents.findEventById(id).then((event: any) => {
+//                 const updateText
+//                     = event.description
+//                         ? `${event.description}\n\n${shareInfoText}`
+//                         : shareInfoText;
+//                 const updateObject = {
+//                     id: event.id,
+//                     ...Platform.select({
+//                         ios: {
+//                             notes: updateText
+//                         },
+//                         android: {
+//                             description: updateText
+//                         }
+//                     })
+//                 };
 
-                // @ts-ignore
-                RNCalendarEvents.saveEvent(event.title, updateObject)
-                .then(resolve, reject);
-            }, reject);
-        }, reject);
-    });
-}
+//                 // @ts-ignore
+//                 RNCalendarEvents.saveEvent(event.title, updateObject)
+//                 .then(resolve, reject);
+//             }, reject);
+//         }, reject);
+//     });
+// }
 
 /**
  * Determines whether the calendar feature is enabled by the app. For
@@ -63,15 +63,15 @@ export function addLinkToCalendarEntry(
  * otherwise, {@code false}.
  */
 export function isCalendarEnabled(stateful: IStateful) {
-    const flag = getFeatureFlag(stateful, CALENDAR_ENABLED);
+    // const flag = getFeatureFlag(stateful, CALENDAR_ENABLED);
 
-    if (typeof flag !== 'undefined') {
-        return flag;
-    }
+    // if (typeof flag !== 'undefined') {
+    //     return flag;
+    // }
 
-    const { calendarEnabled = true } = NativeModules.AppInfo;
+    // const { calendarEnabled = true } = NativeModules.AppInfo;
 
-    return calendarEnabled;
+    return false;
 }
 
 /**
@@ -85,40 +85,40 @@ export function isCalendarEnabled(stateful: IStateful) {
  * @private
  * @returns {void}
  */
-export function _fetchCalendarEntries(
-        store: IStore,
-        maybePromptForPermission: boolean,
-        forcePermission?: boolean) {
-    const { dispatch, getState } = store;
-    const promptForPermission
-        = (maybePromptForPermission
-        && !getState()['features/calendar-sync'].authorization)
-        || forcePermission;
+// export function _fetchCalendarEntries(
+//         store: IStore,
+//         maybePromptForPermission: boolean,
+//         forcePermission?: boolean) {
+//     const { dispatch, getState } = store;
+//     const promptForPermission
+//         = (maybePromptForPermission
+//         && !getState()['features/calendar-sync'].authorization)
+//         || forcePermission;
 
-    _ensureCalendarAccess(promptForPermission, dispatch)
-        .then(accessGranted => {
-            if (accessGranted) {
-                const startDate = new Date();
-                const endDate = new Date();
+//     _ensureCalendarAccess(promptForPermission, dispatch)
+//         .then(accessGranted => {
+//             if (accessGranted) {
+//                 const startDate = new Date();
+//                 const endDate = new Date();
 
-                startDate.setDate(startDate.getDate() + FETCH_START_DAYS);
-                endDate.setDate(endDate.getDate() + FETCH_END_DAYS);
+//                 startDate.setDate(startDate.getDate() + FETCH_START_DAYS);
+//                 endDate.setDate(endDate.getDate() + FETCH_END_DAYS);
 
-                RNCalendarEvents.fetchAllEvents(
+//                 RNCalendarEvents.fetchAllEvents(
 
-                    // @ts-ignore
-                    startDate.getTime(),
-                    endDate.getTime(),
-                    [])
-                    .then(_updateCalendarEntries.bind(store))
-                    .catch(error =>
-                        logger.error('Error fetching calendar.', error));
-            } else {
-                logger.warn('Calendar access not granted.');
-            }
-        })
-        .catch(reason => logger.error('Error accessing calendar.', reason));
-}
+//                     // @ts-ignore
+//                     startDate.getTime(),
+//                     endDate.getTime(),
+//                     [])
+//                     .then(_updateCalendarEntries.bind(store))
+//                     .catch(error =>
+//                         logger.error('Error fetching calendar.', error));
+//             } else {
+//                 logger.warn('Calendar access not granted.');
+//             }
+//         })
+//         .catch(reason => logger.error('Error accessing calendar.', reason));
+// }
 
 /**
  * Ensures calendar access if possible and resolves the promise if it's granted.
@@ -129,23 +129,23 @@ export function _fetchCalendarEntries(
  * @private
  * @returns {Promise}
  */
-function _ensureCalendarAccess(promptForPermission: boolean | undefined, dispatch: IStore['dispatch']) {
-    return new Promise((resolve, reject) => {
-        RNCalendarEvents.checkPermissions()
-            .then(status => {
-                if (status === 'authorized') {
-                    resolve(true);
-                } else if (promptForPermission) {
-                    RNCalendarEvents.requestPermissions()
-                        .then(result => {
-                            dispatch(setCalendarAuthorization(result));
-                            resolve(result === 'authorized');
-                        })
-                        .catch(reject);
-                } else {
-                    resolve(false);
-                }
-            })
-            .catch(reject);
-    });
-}
+// function _ensureCalendarAccess(promptForPermission: boolean | undefined, dispatch: IStore['dispatch']) {
+//     return new Promise((resolve, reject) => {
+//         RNCalendarEvents.checkPermissions()
+//             .then(status => {
+//                 if (status === 'authorized') {
+//                     resolve(true);
+//                 } else if (promptForPermission) {
+//                     RNCalendarEvents.requestPermissions()
+//                         .then(result => {
+//                             dispatch(setCalendarAuthorization(result));
+//                             resolve(result === 'authorized');
+//                         })
+//                         .catch(reject);
+//                 } else {
+//                     resolve(false);
+//                 }
+//             })
+//             .catch(reject);
+//     });
+// }

@@ -219,48 +219,48 @@ function _checkIframe(state: IReduxState, dispatch: IStore['dispatch']) {
  * @returns {void}
  */
 function _maybeDisplayCalendarNotification({ dispatch, getState }: IStore) {
-    const state = getState();
+    // const state = getState();
 
-    const calendarEnabled = isCalendarEnabled(state);
-    const { events: eventList } = state['features/calendar-sync'];
-    const { locationURL } = state['features/base/connection'];
-    const { reducedUI } = state['features/base/responsive-ui'];
+    // const calendarEnabled = isCalendarEnabled(state);
+    // // const { events: eventList } = state['features/calendar-sync'];
+    // const { locationURL } = state['features/base/connection'];
+    // const { reducedUI } = state['features/base/responsive-ui'];
 
-    const currentConferenceURL
-        = locationURL ? getURLWithoutParamsNormalized(locationURL) : '';
-    const ALERT_MILLISECONDS = 5 * 60 * 1000;
-    const now = Date.now();
+    // const currentConferenceURL
+    //     = locationURL ? getURLWithoutParamsNormalized(locationURL) : '';
+    // const ALERT_MILLISECONDS = 5 * 60 * 1000;
+    // const now = Date.now();
 
-    let eventToShow;
+    // let eventToShow;
 
-    if (!calendarEnabled && reducedUI) {
-        return;
-    }
+    // if (!calendarEnabled && reducedUI) {
+    //     return;
+    // }
 
-    if (eventList?.length) {
+    // if (eventList?.length) {
 
-        for (const event of eventList) {
-            const eventURL
-                = event?.url && getURLWithoutParamsNormalized(new URL(event.url));
+    //     for (const event of eventList) {
+    //         const eventURL
+    //             = event?.url && getURLWithoutParamsNormalized(new URL(event.url));
 
-            if (eventURL && eventURL !== currentConferenceURL) {
-                // @ts-ignore
-                if ((!eventToShow && event.startDate > now && event.startDate < now + ALERT_MILLISECONDS)
+    //         if (eventURL && eventURL !== currentConferenceURL) {
+    //             // @ts-ignore
+    //             if ((!eventToShow && event.startDate > now && event.startDate < now + ALERT_MILLISECONDS)
 
-                    // @ts-ignore
-                    || (event.startDate < now && event.endDate > now)) {
-                    eventToShow = event;
-                }
-            }
-        }
-    }
+    //                 // @ts-ignore
+    //                 || (event.startDate < now && event.endDate > now)) {
+    //                 eventToShow = event;
+    //             }
+    //         }
+    //     }
+    // }
 
-    _calendarNotification(
-        {
-            dispatch,
-            getState
-        }, eventToShow
-    );
+    // _calendarNotification(
+    //     {
+    //         dispatch,
+    //         getState
+    //     }, eventToShow
+    // );
 }
 
 /**

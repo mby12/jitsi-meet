@@ -9,7 +9,7 @@ import { translate } from '../../../base/i18n/functions';
 import { withPixelLineHeight } from '../../../base/styles/functions.web';
 import Button from '../../../base/ui/components/web/Button';
 import Spinner from '../../../base/ui/components/web/Spinner';
-import { bootstrapCalendarIntegration, clearCalendarIntegration, signIn } from '../../../calendar-sync/actions';
+// import { bootstrapCalendarIntegration, clearCalendarIntegration, signIn } from '../../../calendar-sync/actions';
 import MicrosoftSignInButton from '../../../calendar-sync/components/MicrosoftSignInButton';
 import { CALENDAR_TYPE } from '../../../calendar-sync/constants';
 import { isCalendarEnabled } from '../../../calendar-sync/functions';
@@ -119,9 +119,9 @@ class CalendarTab extends Component<IProps, IState> {
      * @inheritdoc
      */
     componentDidMount() {
-        this.props.dispatch(bootstrapCalendarIntegration())
-            .catch((err: any) => logger.error('CalendarTab bootstrap failed', err))
-            .then(() => this.setState({ loading: false }));
+        // this.props.dispatch(bootstrapCalendarIntegration())
+        //     .catch((err: any) => logger.error('CalendarTab bootstrap failed', err))
+        //     .then(() => this.setState({ loading: false }));
     }
 
     /**
@@ -158,7 +158,7 @@ class CalendarTab extends Component<IProps, IState> {
      * @returns {void}
      */
     _attemptSignIn(type: string) {
-        this.props.dispatch(signIn(type));
+        // this.props.dispatch(signIn(type));
     }
 
     /**
@@ -174,7 +174,7 @@ class CalendarTab extends Component<IProps, IState> {
         // instead relies on clearing of local auth data. Google signout can
         // also sign the user out of YouTube. So for now we've decided not to
         // do an actual sign out.
-        this.props.dispatch(clearCalendarIntegration());
+        // this.props.dispatch(clearCalendarIntegration());
     }
 
     /**
