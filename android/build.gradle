@@ -38,9 +38,9 @@ ext {
     moduleGroupId = 'com.facebook.react'
 
     // Maven repo where artifacts will be published
-    mavenRepo = "https://github.com/mby12/jitsi-maven-fastlab-repo"
-    mavenUser = "mby12"
-    mavenPassword = "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"
+    mavenRepo = System.env.MVN_REPO ?: ""
+    mavenUser = System.env.MVN_USER ?: ""
+    mavenPassword = System.env.MVN_PASSWORD ?: ""
 
     // Libre build
     libreBuild = (System.env.LIBRE_BUILD ?: "false").toBoolean()
@@ -87,7 +87,6 @@ allprojects {
 
     if (project.name.startsWith('react-native-')) {
         apply plugin: 'maven-publish'
-        group = 'com.github.mby12'
         publishing {
             publications {}
             repositories {
