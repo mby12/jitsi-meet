@@ -460,8 +460,6 @@ PODS:
     - React-jsi (= 0.68.6)
     - React-logger (= 0.68.6)
     - React-perflogger (= 0.68.6)
-  - RNCalendarEvents (2.2.0):
-    - React
   - RNCAsyncStorage (1.17.3):
     - React-Core
   - RNCClipboard (1.5.1):
@@ -543,7 +541,6 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - RNCalendarEvents (from `../node_modules/react-native-calendar-events`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCClipboard (from `../node_modules/@react-native-community/clipboard`)"
   - RNDefaultPreference (from `../node_modules/react-native-default-preference`)
@@ -674,8 +671,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  RNCalendarEvents:
-    :path: "../node_modules/react-native-calendar-events"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCClipboard:
@@ -769,7 +764,6 @@ SPEC CHECKSUMS:
   React-RCTVibration: be5f18ffc644f96f904e0e673ab639ca5d673ee8
   React-runtimeexecutor: d5498cfb7059bf8397b6416db4777843f3f4c1e7
   ReactCommon: 1974dab5108c79b40199f12a4833d2499b9f6303
-  RNCalendarEvents: 7e65eb4a94f53c1744d1e275f7fafcfaa619f7a3
   RNCAsyncStorage: 005c0e2f09575360f142d0d1f1f15e4ec575b1af
   RNCClipboard: 41d8d918092ae8e676f18adada19104fa3e68495
   RNDefaultPreference: 08bdb06cfa9188d5da97d4642dac745218d7fb31
@@ -782,6 +776,6 @@ SPEC CHECKSUMS:
   RNWatch: dae6c858a2051dbdcfb00b9a86cf4d90400263b4
   Yoga: 7929b92b1828675c1bebeb114dae8cb8fa7ef6a3
 
-PODFILE CHECKSUM: d9116cb59cd7e921956e45de7cbbd75bef3862c1
+PODFILE CHECKSUM: 424fc0c02412b7ab69475f67ed9278258b700b8e
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1
