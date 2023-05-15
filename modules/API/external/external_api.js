@@ -90,7 +90,8 @@ const commands = {
     toggleSubtitles: 'toggle-subtitles',
     toggleTileView: 'toggle-tile-view',
     toggleVirtualBackgroundDialog: 'toggle-virtual-background',
-    toggleVideo: 'toggle-video'
+    toggleVideo: 'toggle-video',
+    toggleWhiteboard: 'toggle-whiteboard'
 };
 
 /**
@@ -154,7 +155,8 @@ const events = {
     'subject-change': 'subjectChange',
     'suspend-detected': 'suspendDetected',
     'tile-view-changed': 'tileViewChanged',
-    'toolbar-button-clicked': 'toolbarButtonClicked'
+    'toolbar-button-clicked': 'toolbarButtonClicked',
+    'whiteboard-status-changed': 'whiteboardStatusChanged'
 };
 
 /**
@@ -314,6 +316,7 @@ export default class JitsiMeetExternalAPI extends EventEmitter {
      * @param {string}  [options.e2eeKey] - The key used for End-to-End encryption.
      * THIS IS EXPERIMENTAL.
      * @param {string}  [options.release] - The key used for specifying release if enabled on the backend.
+     * @param {string} [options.sandbox] - Sandbox directive for the created iframe, if desired.
      */
     constructor(domain, ...args) {
         super();
@@ -331,7 +334,8 @@ export default class JitsiMeetExternalAPI extends EventEmitter {
             devices,
             userInfo,
             e2eeKey,
-            release
+            release,
+            sandbox = ''
         } = parseArguments(args);
         const localStorageContent = jitsiLocalStorage.getItem('jitsiLocalStorage');
 
@@ -349,7 +353,7 @@ export default class JitsiMeetExternalAPI extends EventEmitter {
             },
             release
         });
-        this._createIFrame(height, width, onload);
+        this._createIFrame(height, width, onload, sandbox);
         this._transport = new Transport({
             backend: new PostMessageTransportBackend({
                 postisOptions: {
@@ -382,11 +386,12 @@ export default class JitsiMeetExternalAPI extends EventEmitter {
      * parseSizeParam for format details.
      * @param {Function} onload - The function that will listen
      * for onload event.
+     * @param {string} sandbox - Sandbox directive for the created iframe, if desired.
      * @returns {void}
      *
      * @private
      */
-    _createIFrame(height, width, onload) {
+    _createIFrame(height, width, onload, sandbox) {
         const frameName = `jitsiConferenceFrame${id}`;
 
         this._frame = document.createElement('iframe');
@@ -396,6 +401,10 @@ export default class JitsiMeetExternalAPI extends EventEmitter {
         this._setSize(height, width);
         this._frame.setAttribute('allowFullScreen', 'true');
         this._frame.style.border = 0;
+
+        if (sandbox) {
+            this._frame.sandbox = sandbox;
+        }
 
         if (onload) {
             // waits for iframe resources to load
