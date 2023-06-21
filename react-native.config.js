@@ -16,11 +16,11 @@ module.exports = {
                 ios: null
             }
         },
-        'react-native-calendar-events': {
-            platforms: {
-                ios: null
-            }
-        },
+        // 'react-native-calendar-events': {
+        //     platforms: {
+        //         ios: null
+        //     }
+        // },
         'react-native-watch-connectivity': {
             platforms: {
                 ios: null

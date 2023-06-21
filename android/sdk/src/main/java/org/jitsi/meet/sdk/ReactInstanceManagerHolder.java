@@ -90,7 +90,6 @@ class ReactInstanceManagerHolder {
             = new ArrayList<>(Arrays.asList(
             new com.reactnativecommunity.asyncstorage.AsyncStoragePackage(),
             new com.ocetnik.timer.BackgroundTimerPackage(),
-            new com.calendarevents.RNCalendarEventsPackage(),
             new com.corbt.keepawake.KCKeepAwakePackage(),
             new com.facebook.react.shell.MainReactPackage(),
             new com.reactnativecommunity.clipboard.ClipboardPackage(),
