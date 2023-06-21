@@ -21,6 +21,7 @@ target 'JitsiMeetSDK' do
 
   # React Native and its dependencies
   #
+  # use_frameworks!
 
   config = use_native_modules!
   flags = get_default_flags()
@@ -36,7 +37,7 @@ target 'JitsiMeetSDK' do
   # We use auto linking, but some dependencies are excluded from the lite build
   # (see react-native.config.js) so we add them here.
 
-  pod 'giphy-react-native-sdk', :path => '../node_modules/@giphy/react-native-sdk'
+#   pod 'giphy-react-native-sdk', :path => '../node_modules/@giphy/react-native-sdk'
   pod 'RNGoogleSignin', :path => '../node_modules/@react-native-google-signin/google-signin'
   pod 'RNWatch', :path => '../node_modules/react-native-watch-connectivity'
 

@@ -1,47 +1,51 @@
-import { GiphyContent, GiphyGridView, GiphyMediaType, GiphyRating } from '@giphy/react-native-sdk';
-import React, { useCallback, useState } from 'react';
+// import { GiphyContent, GiphyGridView, GiphyMediaType, GiphyRating } from '@giphy/react-native-sdk';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { createGifSentEvent } from '../../../analytics/AnalyticsEvents';
-import { sendAnalytics } from '../../../analytics/functions';
+// import { useDispatch, useSelector } from 'react-redux';
+
+// import { createGifSentEvent } from '../../../analytics/AnalyticsEvents';
+// import { sendAnalytics } from '../../../analytics/functions';
 import JitsiScreen from '../../../base/modal/components/JitsiScreen';
 import Input from '../../../base/ui/components/native/Input';
-import { sendMessage } from '../../../chat/actions.any';
-import { goBack } from '../../../mobile/navigation/components/conference/ConferenceNavigationContainerRef';
-import { formatGifUrlMessage, getGifRating, getGifUrl, getGiphyProxyUrl } from '../../functions.native';
+
+// import { sendMessage } from '../../../chat/actions.any';
+// import { goBack } from '../../../mobile/navigation/components/conference/ConferenceNavigationContainerRef';
+// import { formatGifUrlMessage, getGifRating, getGifUrl, getGiphyProxyUrl } from '../../functions.native';
 
 import GifsMenuFooter from './GifsMenuFooter';
 import styles from './styles';
 
 const GifsMenu = () => {
     const [ searchQuery, setSearchQuery ] = useState('');
-    const dispatch = useDispatch();
+
+    // const dispatch = useDispatch();
     const { t } = useTranslation();
-    const rating = useSelector(getGifRating) as GiphyRating;
-    const proxyUrl = useSelector(getGiphyProxyUrl);
 
-    const options = {
-        mediaType: GiphyMediaType.Gif,
-        limit: 20,
-        rating
-    };
+    // const rating = useSelector(getGifRating) as GiphyRating;
+    // const proxyUrl = useSelector(getGiphyProxyUrl);
 
-    const content = searchQuery === ''
-        ? GiphyContent.trending(options)
-        : GiphyContent.search({
-            ...options,
-            searchQuery
-        });
+    // const options = {
+    //     mediaType: GiphyMediaType.Gif,
+    //     limit: 20,
+    //     rating
+    // };
 
-    const sendGif = useCallback(e => {
-        const url = getGifUrl(e.nativeEvent.media, proxyUrl);
+    // const content = searchQuery === ''
+    //     ? GiphyContent.trending(options)
+    //     : GiphyContent.search({
+    //         ...options,
+    //         searchQuery
+    //     });
 
-        sendAnalytics(createGifSentEvent());
+    // const sendGif = useCallback(e => {
+    //     const url = getGifUrl(e.nativeEvent.media, proxyUrl);
 
-        dispatch(sendMessage(formatGifUrlMessage(url), true));
-        goBack();
-    }, []);
+    //     sendAnalytics(createGifSentEvent());
+
+    //     dispatch(sendMessage(formatGifUrlMessage(url), true));
+    //     goBack();
+    // }, []);
 
     return (
         <JitsiScreen
@@ -53,11 +57,11 @@ const GifsMenu = () => {
                 onChange = { setSearchQuery }
                 placeholder = { t('giphy.search') }
                 value = { searchQuery } />
-            <GiphyGridView
+            {/* <GiphyGridView
                 cellPadding = { 5 }
                 content = { content }
                 onMediaSelect = { sendGif }
-                style = { styles.grid } />
+                style = { styles.grid } /> */}
         </JitsiScreen>
     );
 };

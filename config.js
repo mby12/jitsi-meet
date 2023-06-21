@@ -99,16 +99,16 @@ var config = {
     },
 
     // Disables moderator indicators.
-    // disableModeratorIndicator: false,
+    disableModeratorIndicator: true,
 
     // Disables the reactions feature.
-    // disableReactions: true,
+    disableReactions: true,
 
     // Disables the reactions moderation feature.
-    // disableReactionsModeration: false,
+    disableReactionsModeration: true,
 
     // Disables polls feature.
-    // disablePolls: false,
+    disablePolls: true,
 
     // Disables self-view tile. (hides it from tile view and from filmstrip)
     // disableSelfView: false,
